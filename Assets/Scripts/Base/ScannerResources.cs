@@ -43,14 +43,15 @@ public class ScannerResources : MonoBehaviour
 
     private void GetResourcesWithPlane()
     {
+        int degree = 2;
+        float scanRadiusSqr = Mathf.Pow(_scanRadius, degree);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _scanRadius, _maskResource);
 
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out Resource resource) == true)
             {
-                int degree = 2;
-                float scanRadiusSqr = Mathf.Pow(_scanRadius, degree);
                 float distance = (transform.position - resource.transform.position).sqrMagnitude;
 
                 if (distance <= scanRadiusSqr)

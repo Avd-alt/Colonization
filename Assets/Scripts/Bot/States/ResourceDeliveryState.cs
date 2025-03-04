@@ -4,37 +4,36 @@ public class ResourceDeliveryState : BotStateBase
 {
     private Vector3 _basePosition;
 
-    public ResourceDeliveryState(Bot bot, BotMovement botMovement, Vector3 basePosition)
-        : base(bot, botMovement)
+    public ResourceDeliveryState(Bot bot, BotMovement botMovement, Vector3 basePosition) : base(bot, botMovement)
     {
         _basePosition = basePosition;
     }
 
     public override void Enter()
     {
-        _botMovement.ResourceDelivered += OnResourceDelivered;
+        BotMovement.ResourceDelivered += OnResourceDelivered;
     }
 
     public override void Update()
     {
-        _botMovement.MoveToResource(_basePosition, true);
+        BotMovement.MoveTo(_basePosition, isDeliveringResource: true);
     }
 
     public override void Exit()
     {
-        _botMovement.ResourceDelivered -= OnResourceDelivered;
+        BotMovement.ResourceDelivered -= OnResourceDelivered;
     }
 
     private void OnResourceDelivered()
     {
-        Resource resource = _bot.GetCurrentResource();
+        Resource resource = Bot.CurrentResource;
 
         if (resource != null)
         {
-            _bot.GetResourceManager().NotifyResourceDelivered(resource);
-            _bot.SetCurrentResource(null);
+            Bot.GetResourceManager().NotifyResourceDelivered(resource);
+            Bot.SetCurrentResource(null);
         }
 
-        _bot.ChangeState(new IdleState(_bot, _botMovement));
+        Bot.ChangeState(new IdleState(Bot, BotMovement));
     }
 }

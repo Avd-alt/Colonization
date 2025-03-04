@@ -10,25 +10,19 @@ public class BotMovement : MonoBehaviour
     public event Action ResourceDelivered;
     public event Action TargetBaseAchieved;
 
-    public void MoveToFlag(Vector3 flagPosition)
+    public void MoveTo(Vector3 targetPosition, bool isDeliveringResource = false, bool isMovingToFlag = false)
     {
-        RotateBot(flagPosition);
-        MoveTo(flagPosition);
+        RotateBot(targetPosition);
 
-        if (IsWithinRange(flagPosition))
+        Move(targetPosition);
+
+        if (IsWithinRange(targetPosition) == true)
         {
-            TargetBaseAchieved?.Invoke();
-        }
-    }
-
-    public void MoveToResource(Vector3 target, bool isDeliveringResource)
-    {
-        RotateBot(target);
-        MoveTo(target);
-
-        if (IsWithinRange(target) == true)
-        {
-            if (isDeliveringResource == true)
+            if (isMovingToFlag == true)
+            {
+                TargetBaseAchieved?.Invoke();
+            }
+            else if (isDeliveringResource == true)
             {
                 ResourceDelivered?.Invoke();
             }
@@ -39,7 +33,7 @@ public class BotMovement : MonoBehaviour
         }
     }
 
-    private void MoveTo(Vector3 target)
+    private void Move(Vector3 target)
     {
         float currentY = transform.position.y;
         Vector3 targetPosition = new Vector3(target.x, currentY, target.z);

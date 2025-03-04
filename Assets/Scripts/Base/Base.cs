@@ -12,8 +12,8 @@ public class Base : MonoBehaviour, IResourceDeliveryAnnouncer
     private const int MinFlagsRequired = 0;
 
     [SerializeField] private ResourceDepot _resourceDepot;
+    [SerializeField] private SpawnerBots _spawnerBots;
 
-    [Inject] private SpawnerBots _spawnerBots;
     [Inject] private ResourceDistributor _resourceDistributor;
     [Inject] private FlagCreator _flagCreator;
 
@@ -83,7 +83,7 @@ public class Base : MonoBehaviour, IResourceDeliveryAnnouncer
     {
         foreach (var bot in _bots)
         {
-            if (bot.IsAvailable())
+            if (bot.IsAvailable)
             {
                 Resource resource = _resourceDistributor.TryGetAvailableResource();
 
@@ -125,5 +125,5 @@ public class Base : MonoBehaviour, IResourceDeliveryAnnouncer
         }
     }
 
-    private Bot FindAvailableBot() => _bots.Find(bot => bot.IsAvailable());
+    private Bot FindAvailableBot() => _bots.Find(bot => bot.IsAvailable);
 }

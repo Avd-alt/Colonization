@@ -427,8 +427,7 @@ GameObject:
   - component: {fileID: 4142604146599619088}
   - component: {fileID: 2677118598097370653}
   - component: {fileID: 568783317189861999}
-  - component: {fileID: 5347514181787025181}
-  - component: {fileID: -7195018441040542104}
+  - component: {fileID: -1837574744005373388}
   m_Layer: 8
   m_Name: CS_Big_Castle_Stage01
   m_TagString: Untagged
@@ -515,11 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d92fcd94e4c0e47990ec59fe4a8c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnerBots: {fileID: 7770046466302533366}
-  _resourceDistributor: {fileID: 0}
   _resourceDepot: {fileID: 2677118598097370653}
-  _flagCreator: {fileID: 0}
-  _removerResource: {fileID: 0}
+  _spawnerBots: {fileID: 7770046466302533366}
 --- !u!114 &4142604146599619088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,8 +555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _depot: {fileID: 2677118598097370653}
   _textMeshProUGUI: {fileID: 6306103009819932880}
---- !u!65 &5347514181787025181
-BoxCollider:
+--- !u!136 &-1837574744005373388
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -577,25 +573,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.6415963, y: 4.641596, z: 4.9362936}
-  m_Center: {x: -1.6221628, y: 2.5, z: -1.1358752}
---- !u!114 &-7195018441040542104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3612225550923538123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3334ecf0b2d1fe447a3e926515f92339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _resourcePool: {fileID: 0}
-  _resourceDistributor: {fileID: 0}
-  _flagCreator: {fileID: 0}
-  _clickVisualizer: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 5.7278624
+  m_Height: 12.906561
+  m_Direction: 1
+  m_Center: {x: 0.14443634, y: 2.5617533, z: -1.078666}
 --- !u!1 &4850739098978216290
 GameObject:
   m_ObjectHideFlags: 0

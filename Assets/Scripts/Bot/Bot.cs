@@ -5,10 +5,12 @@ public class Bot : MonoBehaviour
 {
     private BotMovement _botMovement;
     private IBotState _currentState;
-    private BaseCreator _baseCreator;
-    private Resource _currentResource;
     private IResourceDeliveryAnnouncer _resourceDeliveryAnnouncer;
-    private Vector3 _basePosition;
+
+    public Vector3 BasePosition { get; private set; }
+    public BaseCreator BaseCreator { get; private set; }
+    public Resource CurrentResource { get; private set; }
+    public bool IsAvailable => _currentState is IdleState;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class Bot : MonoBehaviour
         _currentState = new IdleState(this, _botMovement);
         _currentState.Enter();
     }
+
     private void Update()
     {
         if (_currentState != null)
@@ -23,6 +26,7 @@ public class Bot : MonoBehaviour
             _currentState.Update();
         }
     }
+
     public void ChangeState(IBotState newState)
     {
         if (_currentState != null)
@@ -36,26 +40,27 @@ public class Bot : MonoBehaviour
             _currentState.Enter();
         }
     }
-    public Vector3 GetBasePosition() => _basePosition;
-    public void SetBasePosition(Vector3 basePosition) => _basePosition = basePosition;
-    public BaseCreator GetBaseCreator() => _baseCreator;
-    public void SetBaseCreator(BaseCreator baseCreator) => _baseCreator = baseCreator;
+
+    public void SetBasePosition(Vector3 basePosition) => BasePosition = basePosition;
+
+    public void SetBaseCreator(BaseCreator baseCreator) => BaseCreator = baseCreator;
+
     public IResourceDeliveryAnnouncer GetResourceManager() => _resourceDeliveryAnnouncer;
+
     public void SetResourceManager(IResourceDeliveryAnnouncer resourceDeliveryAnnouncer) => _resourceDeliveryAnnouncer = resourceDeliveryAnnouncer;
-    public Resource GetCurrentResource() => _currentResource;
-    public void SetCurrentResource(Resource resource) => _currentResource = resource;
-    public bool IsAvailable() => _currentState is IdleState;
+
+    public void SetCurrentResource(Resource resource) => CurrentResource = resource;
 
     public void GatherResource(Vector3 resourcePosition)
     {
-        if (IsAvailable())
+        if (IsAvailable == true)
         {
             ChangeState(new ResourceGatheringState(this, _botMovement, resourcePosition));
         }
     }
     public void BuildNewBase(Flag flag)
     {
-        if (IsAvailable())
+        if (IsAvailable == true)
         {
             ChangeState(new BaseConstructionState(this, _botMovement, flag));
         }

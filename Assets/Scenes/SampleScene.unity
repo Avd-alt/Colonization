@@ -6276,7 +6276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3334ecf0b2d1fe447a3e926515f92339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnerBots: {fileID: 5465013540564397135}
   _pool: {fileID: 743771630}
   _resourceDistributor: {fileID: 3634595332657920854}
   _removerResource: {fileID: 4189032698320534500}
@@ -6548,6 +6547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceDepot: {fileID: 5818657658459617128}
+  _spawnerBots: {fileID: 5465013540564397135}
 --- !u!1 &1316579559883720289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6690,7 +6690,7 @@ Transform:
   m_GameObject: {fileID: 8485537968648369769}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6940,7 +6940,7 @@ GameObject:
   - component: {fileID: 4189032698320534500}
   - component: {fileID: 5818657658459617128}
   - component: {fileID: 9097347793232007767}
-  - component: {fileID: 7512527917712548607}
+  - component: {fileID: 9097347793232007768}
   m_Layer: 8
   m_Name: CS_Big_Castle_Stage01
   m_TagString: Untagged
@@ -7118,27 +7118,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 912748999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7512527917712548607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5558821064470187725}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.6415963, y: 4.641596, z: 4.9362936}
-  m_Center: {x: -1.6221628, y: 2.5, z: -1.1358752}
 --- !u!1 &8485537968648369769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7197,6 +7176,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _depot: {fileID: 5818657658459617128}
   _textMeshProUGUI: {fileID: 1540440594955985913}
+--- !u!136 &9097347793232007768
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558821064470187725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.7278624
+  m_Height: 12.906561
+  m_Direction: 1
+  m_Center: {x: 0.14443634, y: 2.5617533, z: -1.078666}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

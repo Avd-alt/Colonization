@@ -20,7 +20,7 @@ public class SpawnerResources : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        float secondsDelay = 0.4f;
+        float secondsDelay = 0.3f;
         WaitForSeconds delay = new WaitForSeconds(secondsDelay);
 
         while (true)

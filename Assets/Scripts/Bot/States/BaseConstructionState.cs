@@ -6,27 +6,31 @@ public class BaseConstructionState : BotStateBase
     {
         _flag = flag;
     }
+
     public override void Enter()
     {
-        _botMovement.TargetBaseAchieved += OnBaseLocationReached;
+        BotMovement.TargetBaseAchieved += OnBaseLocationReached;
     }
+
     public override void Update()
     {
-        _botMovement.MoveToFlag(_flag.transform.position);
+        BotMovement.MoveTo(_flag.transform.position, isMovingToFlag: true);
     }
+
     public override void Exit()
     {
-        _botMovement.TargetBaseAchieved -= OnBaseLocationReached;
+        BotMovement.TargetBaseAchieved -= OnBaseLocationReached;
     }
+
     private void OnBaseLocationReached()
     {
-        BaseCreator creator = _bot.GetBaseCreator();
+        BaseCreator creator = Bot.BaseCreator;
 
         if (creator != null)
         {
-            creator.CreateBase(_bot, _flag);
+            Bot.BaseCreator.CreateBase(Bot, _flag);
         }
 
-        _bot.ChangeState(new IdleState(_bot, _botMovement));
+        Bot.ChangeState(new IdleState(Bot, BotMovement));
     }
 }
